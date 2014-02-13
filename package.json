@@ -1,0 +1,10 @@
+{
+	"name" : "frc-team342-web-dashboard",
+	"private" : true,
+	"dependencies": {
+		"frc-netconsole" : "*",
+		"socket.io" : "*"
+	},
+	"scripts" : {
+	}
+}

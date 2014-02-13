@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script>
+      var socket = io.connect('http://localhost:3000');
+
+      socket.on('news', function (data) {
+	    $('#console').append(data.message.toString());
+        $('#console').trigger('change');
+      });
+
+      $(function() {
+        $('#reboot').click(function() {
+          socket.emit('control', 'reboot');
+        });
+
+        $('#console').change(function() {
+          this.scrollTop = this.scrollHeight;
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div>
+      <textarea id="console"></textarea>
+      <input type="button" id="reboot" value="reboot" />
+    </div>
+  </body>
+</html>
